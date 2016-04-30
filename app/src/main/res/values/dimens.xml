@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_title">24sp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+
+    <dimen name="player_deck_height">140dp</dimen>
+    <dimen name="player_deck_width">120dp</dimen>
+    <dimen name="main_deck_height">160dp</dimen>
+    <dimen name="main_deck_width">140dp</dimen>
+</resources>

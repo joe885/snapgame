@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Snap Game</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="player_one_title">Player 1</string>
+    <string name="button_snap_title">SNAP!</string>
+    <string name="button_deal_title">DEAL</string>
+</resources>
