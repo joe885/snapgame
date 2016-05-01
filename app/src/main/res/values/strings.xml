@@ -6,4 +6,8 @@
     <string name="player_one_title">Player 1</string>
     <string name="button_snap_title">SNAP!</string>
     <string name="button_deal_title">DEAL</string>
+    <string name="player_title">Player %1$d</string>
+    <string name="symbol_jack">J</string>
+    <string name="symbol_queen">Q</string>
+    <string name="symbol_king">K</string>
 </resources>

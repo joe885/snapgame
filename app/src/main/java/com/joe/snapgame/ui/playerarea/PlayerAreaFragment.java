@@ -2,16 +2,25 @@ package com.joe.snapgame.ui.playerarea;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.joe.snapgame.R;
+import com.joe.snapgame.model.Card;
 import com.joe.snapgame.ui.core.BaseFragment;
 import com.joe.snapgame.ui.core.InjectableActivity;
+import com.joe.snapgame.ui.views.CardView;
 
 import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by doneg on 30/04/2016.
@@ -19,6 +28,15 @@ import javax.inject.Inject;
 public class PlayerAreaFragment extends BaseFragment implements IPlayerAreaView {
 
     private static final String PLAYER_INDEX_KEY = "PLAYER_INDEX";
+
+    @BindView(R.id.cvFaceUpDeck)
+    protected CardView faceUpDeck;
+    @BindView(R.id.tvDeckCount)
+    protected TextView tvDeckCount;
+    @BindView(R.id.btnAction)
+    protected Button actionButton;
+    @BindView(R.id.tvPlayerTitle)
+    protected TextView playerTitle;
 
     @Inject
     protected IPlayerAreaFragmentPresenter presenter;
@@ -54,8 +72,39 @@ public class PlayerAreaFragment extends BaseFragment implements IPlayerAreaView 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_player_area, container, false);
+        ButterKnife.bind(this, rootView);
 
         presenter.onViewReady();
         return rootView;
+    }
+
+    @OnClick(R.id.btnAction)
+    protected void actionButtonPressed() {
+        presenter.actionButtonPressed();
+    }
+
+    @Override
+    public void setActionButtonTitle(@StringRes int titleRes) {
+        actionButton.setText(titleRes);
+    }
+
+    @Override
+    public void setPlayerTitle(int playerIndex) {
+        playerTitle.setText(getString(R.string.player_title, playerIndex));
+    }
+
+    @Override
+    public void setDeckCount(int deckCount) {
+        tvDeckCount.setText(String.valueOf(deckCount));
+    }
+
+    @Override
+    public void setFaceUpDeckCardImage(Card card) {
+        faceUpDeck.setCard(card);
+    }
+
+    @Override
+    public void setActionButtonEnabled(boolean enabled) {
+        actionButton.setEnabled(enabled);
     }
 }

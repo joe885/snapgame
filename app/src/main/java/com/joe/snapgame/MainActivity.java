@@ -11,8 +11,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.joe.snapgame.model.SnapGame;
 import com.joe.snapgame.ui.core.InjectableActivity;
 import com.joe.snapgame.ui.playerarea.PlayerAreaFragment;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +32,9 @@ public class MainActivity extends InjectableActivity {
     protected ViewGroup containerPlayer1;
     @BindView(R.id.containerPlayer2)
     protected ViewGroup containerPlayer2;
+
+    @Inject
+    protected SnapGame game;
 
     @SuppressLint("InlinedApi")
     @Override
@@ -50,6 +56,8 @@ public class MainActivity extends InjectableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        game.initialiseNewGame();
 
         containerPlayer2.setScaleX(-1);
         containerPlayer2.setScaleY(-1);

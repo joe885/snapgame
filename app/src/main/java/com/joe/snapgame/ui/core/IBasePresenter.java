@@ -8,18 +8,17 @@ import com.joe.snapgame.utils.DataError;
 public interface IBasePresenter {
 
     /**
-     * Called by the view object (fragment or activity) jobDates the view is ready to be updated.
-     * Typically this is called in the onStart() lifecycle method.
+     * Called by the view object (fragment or activity) once the view is ready to be updated.
      */
     void onViewReady();
 
     /**
-     * Called by the data object jobDates it has assembled all it's data
+     * Called by the data object once it has assembled all it's data
      */
     void onDataReady();
 
     /**
-     * Called by the data object jobDates it has had an erorr jobDates loading the data
+     * Called by the data object when it has had an error loading the data
      */
     void onDataError(DataError error);
 

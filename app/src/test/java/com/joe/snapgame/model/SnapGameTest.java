@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -23,7 +22,7 @@ public class SnapGameTest {
     private static final int EXPECTED_DECK_SIZE = 52;
 
     private SnapGame game;
-    private SnapGame.GameObserver observer = mock(SnapGame.GameObserver.class);
+    private SnapGame.IGameObserver observer = mock(SnapGame.IGameObserver.class);
 
     @Before
     public void setUp() throws Exception {
@@ -104,6 +103,11 @@ public class SnapGameTest {
 
     @Test
     public void shouldAwardTopCardToDrawingPlayerWhenSnapUnsuccessful() {
+
+    }
+
+    @Test
+    public void shouldEndGameWhenOnePlayerRunsOutOfCards() {
 
     }
 }

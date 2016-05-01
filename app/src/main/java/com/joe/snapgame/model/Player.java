@@ -23,12 +23,18 @@ public class Player {
     }
 
     public Card drawCard() {
+        if (faceDownDeck.empty()) {
+            return null;
+        }
         Card card = faceDownDeck.pop();
         faceUpDeck.push(card);
         return card;
     }
 
     public Card getTopFaceUpCard() {
+        if (faceUpDeck.empty()) {
+            return null;
+        }
         return faceUpDeck.peek();
     }
 
@@ -36,5 +42,15 @@ public class Player {
         Stack<Card> deck = faceUpDeck;
         faceUpDeck = new Stack<>();
         return deck;
+    }
+
+    public void addToBottomOfDeck(Stack<Card> deck) {
+        faceDownDeck.addAll(0, deck);
+    }
+
+    public void addFaceUpDeckToFaceDownDeck() {
+        Stack<Card> deck = faceUpDeck;
+        faceUpDeck = new Stack<>();
+        addToBottomOfDeck(deck);
     }
 }

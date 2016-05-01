@@ -7,4 +7,5 @@ import com.joe.snapgame.ui.core.IBasePresenter;
  */
 public interface IPlayerAreaFragmentPresenter extends IBasePresenter {
     void initialiseData(int playerIndex);
+    void actionButtonPressed();
 }
