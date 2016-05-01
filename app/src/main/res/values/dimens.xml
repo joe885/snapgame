@@ -5,7 +5,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
 
-    <dimen name="player_deck_height">140dp</dimen>
+    <dimen name="player_deck_height">180dp</dimen>
     <dimen name="player_deck_width">120dp</dimen>
     <dimen name="main_deck_height">160dp</dimen>
     <dimen name="main_deck_width">140dp</dimen>

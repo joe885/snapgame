@@ -3,7 +3,6 @@ package com.joe.snapgame.dagger.module;
 import android.support.v4.app.Fragment;
 
 import com.joe.snapgame.ui.core.InjectableFragment;
-import com.joe.snapgame.ui.gamearea.MainAreaModule;
 import com.joe.snapgame.ui.playerarea.PlayerAreaFragmentModule;
 
 import dagger.Module;
@@ -13,8 +12,7 @@ import dagger.Provides;
  * Created by Joseph Donegan.
  */
 @Module(includes = {
-        PlayerAreaFragmentModule.class,
-        MainAreaModule.class
+        PlayerAreaFragmentModule.class
 })
 public class FragmentModule {
 
