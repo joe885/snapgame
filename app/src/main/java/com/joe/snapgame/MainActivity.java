@@ -2,6 +2,7 @@ package com.joe.snapgame;
 
 import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.joe.snapgame.ui.core.InjectableActivity;
+import com.joe.snapgame.ui.playerarea.PlayerAreaFragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -17,14 +21,14 @@ import butterknife.ButterKnife;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends InjectableActivity {
 
     @BindView(android.R.id.content)
     protected View contentView;
-//    @BindView(R.id.layoutPlayer1)
-//    protected ViewGroup layoutPlayer1;
-//    @BindView(R.id.layoutPlayer2)
-//    protected ViewGroup layoutPlayer2;
+    @BindView(R.id.containerPlayer1)
+    protected ViewGroup containerPlayer1;
+    @BindView(R.id.containerPlayer2)
+    protected ViewGroup containerPlayer2;
 
     @SuppressLint("InlinedApi")
     @Override
@@ -42,12 +46,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        createActivityComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        ViewGroup player2Fragment = (ViewGroup) findViewById(R.id.fragmentPlayer2);
-        player2Fragment.setScaleX(-1);
-        player2Fragment.setScaleY(-1);
+        containerPlayer2.setScaleX(-1);
+        containerPlayer2.setScaleY(-1);
+
+        PlayerAreaFragment player1Fragment = PlayerAreaFragment.newInstance(0);
+        PlayerAreaFragment player2Fragment = PlayerAreaFragment.newInstance(1);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.containerPlayer1, player1Fragment);
+        transaction.replace(R.id.containerPlayer2, player2Fragment);
+        transaction.commit();
     }
 }

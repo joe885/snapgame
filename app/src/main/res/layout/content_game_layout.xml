@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <fragment
-        android:name="com.joe.snapgame.ui.playerarea.PlayerAreaFragment"
-        android:id="@+id/fragmentPlayer2"
+    <FrameLayout
+        android:id="@+id/containerPlayer2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_player_area" />
+        android:layout_height="wrap_content"/>
 
     <fragment
         android:name="com.joe.snapgame.ui.gamearea.MainAreaFragment"
@@ -22,11 +20,9 @@
         android:layout_gravity="center"
         tools:layout="@layout/fragment_main_area"/>
 
-    <fragment
-        android:name="com.joe.snapgame.ui.playerarea.PlayerAreaFragment"
-        android:id="@+id/fragmentPlayer1"
+    <FrameLayout
+        android:id="@+id/containerPlayer1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_player_area" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
