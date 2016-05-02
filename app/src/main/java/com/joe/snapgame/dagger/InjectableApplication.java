@@ -22,7 +22,7 @@ public class InjectableApplication extends Application {
     protected ApplicationComponent applicationComponent;
 
     public static InjectableApplication get(Context context) {
-        return (InjectableApplication)context.getApplicationContext();
+        return (InjectableApplication) context.getApplicationContext();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class InjectableApplication extends Application {
         initialiseDependencyInjection();
     }
 
-    private void initialiseDependencyInjection() {
+    protected void initialiseDependencyInjection() {
         applicationModule = new ApplicationModule(this);
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(applicationModule)

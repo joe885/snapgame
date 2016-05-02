@@ -7,7 +7,7 @@ import com.joe.snapgame.ui.core.BasePresenter;
 import com.joe.snapgame.utils.DataError;
 
 /**
- * Created by doneg on 01/05/2016.
+ * Created by Joseph Donegan.
  */
 public class PlayerAreaFragmentPresenter extends BasePresenter<IPlayerAreaView>
         implements IPlayerAreaFragmentPresenter, SnapGame.IGameObserver {
@@ -65,6 +65,11 @@ public class PlayerAreaFragmentPresenter extends BasePresenter<IPlayerAreaView>
         }
     }
 
+    @Override
+    public void newGamePressed() {
+        game.initialiseNewGame();
+    }
+
     private void setActionButtonMode(ActionButtonMode mode) {
         actionButtonMode = mode;
         switch (actionButtonMode) {
@@ -108,16 +113,22 @@ public class PlayerAreaFragmentPresenter extends BasePresenter<IPlayerAreaView>
 
     @Override
     public void onSnapCalledInError(int playerIndex) {
-
+        if (playerIndex == this.playerIndex) {
+            view.showSnapFailed();
+        }
     }
 
     @Override
     public void onSnapCalledSuccessfully(int playerIndex) {
-
+        if (playerIndex == this.playerIndex) {
+            view.showSnapSuccess();
+        }
     }
 
     @Override
     public void onGameEnded(int winningPlayerIndex) {
-
+        if (winningPlayerIndex == this.playerIndex) {
+            view.showGameOver(winningPlayerIndex);
+        }
     }
 }

@@ -7,4 +7,7 @@
     <color name="black_overlay">#66000000</color>
     <color name="bg_card">#FFFFFF</color>
     <color name="border_card">#000000</color>
+    <color name="bg_snap_success_notification">#A0009000</color>
+    <color name="bg_snap_failed_notification">#A0FF0000</color>
+    <color name="text_snap_notification">#FFFFFF</color>
 </resources>

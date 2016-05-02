@@ -3,7 +3,7 @@ package com.joe.snapgame.model;
 import java.util.Stack;
 
 /**
- * Created by doneg on 01/05/2016.
+ * Created by Joseph Donegan.
  */
 public class Player {
     private Stack<Card> faceDownDeck;
@@ -52,5 +52,9 @@ public class Player {
         Stack<Card> deck = faceUpDeck;
         faceUpDeck = new Stack<>();
         addToBottomOfDeck(deck);
+    }
+
+    public Stack<Card> getFaceDownDeck() {
+        return faceDownDeck;
     }
 }

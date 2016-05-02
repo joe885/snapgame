@@ -9,13 +9,13 @@ import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by doneg on 01/05/2016.
+ * Created by Joseph Donegan.
  */
 public class SnapGame {
     private static final int NUM_PLAYERS = 2;
     private static final long TURN_DELAY_MS = TimeUnit.SECONDS.toMillis(1);
 
-    private Stack<Card> deck;
+    protected Stack<Card> deck;
     private List<Player> players;
 
     private int currentPlayerIndex = -1;
@@ -38,6 +38,15 @@ public class SnapGame {
     private List<IGameObserver> observers = new ArrayList<>();
 
     public void initialiseNewGame() {
+        generateNewDeck();
+
+        initialisePlayers();
+
+        //Start a new turn
+        startNewTurn();
+    }
+
+    protected void generateNewDeck() {
         //Create a new deck
         deck = new Stack<>();
         for (Card.Suit suit : Card.Suit.values()) {
@@ -48,7 +57,9 @@ public class SnapGame {
 
         //Shuffle the deck
         Collections.shuffle(deck);
+    }
 
+    protected void initialisePlayers() {
         //Split the deck equally per player
         players = new ArrayList<>(NUM_PLAYERS);
         int playerDeckSize = deck.size() / NUM_PLAYERS;
@@ -65,9 +76,6 @@ public class SnapGame {
                 observer.onPlayerDeckChanged(playerIndex);
             }
         }
-
-        //Start a new turn
-        startNewTurn();
     }
 
     private void startNewTurn() {
@@ -76,6 +84,7 @@ public class SnapGame {
             currentPlayerIndex = 0;
         }
 
+        checkPlayerDecks(currentPlayerIndex);
         for (IGameObserver observer : observers) {
             observer.onNewTurnStarted(currentPlayerIndex);
         }
@@ -106,7 +115,6 @@ public class SnapGame {
             observer.onPlayerDealt(playerIndex);
             observer.onPlayerDeckChanged(playerIndex);
         }
-        checkPlayerDecks();
         newTurnHandler.postDelayed(newTurnRunnable, TURN_DELAY_MS);
         return card;
     }
@@ -155,7 +163,7 @@ public class SnapGame {
             observer.onPlayerDeckChanged(callingPlayerIndex);
             observer.onPlayerDeckChanged(1 - callingPlayerIndex);
         }
-        checkPlayerDecks();
+        checkPlayerDecks(callingPlayerIndex);
     }
 
     private void failedSnap(int callingPlayerIndex) {
@@ -169,17 +177,15 @@ public class SnapGame {
             observer.onPlayerDeckChanged(callingPlayerIndex);
             observer.onPlayerDeckChanged(1 - callingPlayerIndex);
         }
-        checkPlayerDecks();
+        checkPlayerDecks(callingPlayerIndex);
     }
 
-    private void checkPlayerDecks() {
-        for (int playerIndex = 0; playerIndex < players.size(); ++playerIndex) {
-            Player player = players.get(playerIndex);
-            if ((player.getFaceDownDeckSize() + player.getFaceDownDeckSize()) == 0) {
-                gameOver(1 - playerIndex);
-            } else if (player.getFaceDownDeckSize() == 0) {
-                player.addFaceUpDeckToFaceDownDeck();
-            }
+    private void checkPlayerDecks(int playerIndex) {
+        Player player = players.get(playerIndex);
+        if ((player.getFaceDownDeckSize() + player.getFaceUpDeckSize()) == 0) {
+            gameOver(1 - playerIndex);
+        } else if (player.getFaceDownDeckSize() == 0) {
+            player.addFaceUpDeckToFaceDownDeck();
         }
     }
 

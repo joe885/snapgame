@@ -2,8 +2,12 @@ package com.joe.snapgame.dagger.module;
 
 import android.support.v4.app.Fragment;
 
+import com.joe.snapgame.dagger.scope.FragmentScope;
+import com.joe.snapgame.model.SnapGame;
 import com.joe.snapgame.ui.core.InjectableFragment;
-import com.joe.snapgame.ui.playerarea.PlayerAreaFragmentModule;
+import com.joe.snapgame.ui.playerarea.IPlayerAreaFragmentPresenter;
+import com.joe.snapgame.ui.playerarea.IPlayerAreaView;
+import com.joe.snapgame.ui.playerarea.PlayerAreaFragmentPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,9 +15,7 @@ import dagger.Provides;
 /**
  * Created by Joseph Donegan.
  */
-@Module(includes = {
-        PlayerAreaFragmentModule.class
-})
+@Module
 public class FragmentModule {
 
     private InjectableFragment fragment;
@@ -23,7 +25,20 @@ public class FragmentModule {
     }
 
     @Provides
+    @FragmentScope
     Fragment provideFragment() {
         return fragment;
+    }
+
+    @Provides
+    @FragmentScope
+    public IPlayerAreaView provideIPlayerAreaView(Fragment fragment) {
+        return (IPlayerAreaView) fragment;
+    }
+
+    @Provides
+    @FragmentScope
+    public IPlayerAreaFragmentPresenter provideIPlayerAreaFragmentPresenter(IPlayerAreaView view, SnapGame game) {
+        return new PlayerAreaFragmentPresenter(view, game);
     }
 }

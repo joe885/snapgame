@@ -13,4 +13,5 @@
     <dimen name="card_suit_symbol_height">70dp</dimen>
     <dimen name="card_border">2dp</dimen>
     <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="text_size_snap_notification">40sp</dimen>
 </resources>

@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by doneg on 01/05/2016.
+ * Created by Joseph Donegan.
  */
 public class CardView extends RelativeLayout {
 
@@ -85,7 +85,7 @@ public class CardView extends RelativeLayout {
             cardValue.setText(getResources().getString(R.string.symbol_jack));
         } else if (value == 11) {
             cardValue.setText(getResources().getString(R.string.symbol_queen));
-        } else if (value == 13) {
+        } else if (value == 12) {
             cardValue.setText(getResources().getString(R.string.symbol_king));
         } else {
             cardValue.setText(String.valueOf(value + 1));

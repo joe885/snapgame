@@ -18,7 +18,7 @@ public abstract class InjectableActivity extends AppCompatActivity {
         activityComponent = null;
     }
 
-    protected  ActivityComponent createActivityComponent() {
+    protected ActivityComponent createActivityComponent() {
         activityComponent = InjectableApplication.get(this).createActivityComponent(this);
         return activityComponent;
     }

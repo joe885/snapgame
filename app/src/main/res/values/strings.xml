@@ -10,4 +10,7 @@
     <string name="symbol_jack">J</string>
     <string name="symbol_queen">Q</string>
     <string name="symbol_king">K</string>
+    <string name="snap_notification_success">SNAP!</string>
+    <string name="snap_notification_failed">Sorry! That wasn\'t a snap!</string>
+    <string name="game_over_title">Player %1$s won!</string>
 </resources>

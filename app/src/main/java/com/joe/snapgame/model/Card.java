@@ -1,7 +1,7 @@
 package com.joe.snapgame.model;
 
 /**
- * Created by doneg on 01/05/2016.
+ * Created by Joseph Donegan.
  */
 public class Card {
     public static final int MAX_VALUE = 12;
@@ -37,6 +37,6 @@ public class Card {
         Card card = (Card) other;
         return super.equals(card) ||
                 ((card.suit == this.suit) &&
-                (card.value == this.value));
+                        (card.value == this.value));
     }
 }

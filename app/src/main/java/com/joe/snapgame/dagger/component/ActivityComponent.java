@@ -11,7 +11,7 @@ import dagger.Subcomponent;
  * Created by Joseph Donegan.
  */
 @ActivityScope
-@Subcomponent(modules={ActivityModule.class})
+@Subcomponent(modules = {ActivityModule.class})
 public interface ActivityComponent {
 
     FragmentComponent plus(FragmentModule fragmentModule);

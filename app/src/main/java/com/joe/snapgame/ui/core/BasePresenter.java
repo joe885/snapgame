@@ -5,7 +5,7 @@ import com.joe.snapgame.utils.DataError;
 /**
  * Created by Joseph Donegan.
  */
-public abstract class BasePresenter<V extends  IBaseView> implements IBasePresenter {
+public abstract class BasePresenter<V extends IBaseView> implements IBasePresenter {
 
     protected boolean isDataReady;
     protected boolean isViewReady;

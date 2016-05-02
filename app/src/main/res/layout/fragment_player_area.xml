@@ -1,52 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/margin_small"
-    android:gravity="bottom">
-
-    <FrameLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="@dimen/player_deck_height"
-        android:background="@drawable/bg_card">
-        <TextView
-            android:id="@+id/tvDeckCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:text="26"
-            android:textSize="@dimen/text_size_title"/>
-    </FrameLayout>
-
-    <com.joe.snapgame.ui.views.CardView
-        android:id="@+id/cvFaceUpDeck"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="@dimen/player_deck_height"
-        android:layout_marginLeft="@dimen/margin_small"/>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <TextView
-            android:id="@+id/tvPlayerTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/player_one_title"
-            android:textSize="@dimen/text_size_title"
-            android:padding="@dimen/margin_small"/>
-        <Button
-            android:id="@+id/btnAction"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_small">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/player_deck_height"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card">
+
+            <TextView
+                android:id="@+id/tvDeckCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_size_title"
+                tools:text="26" />
+        </FrameLayout>
+
+        <com.joe.snapgame.ui.views.CardView
+            android:id="@+id/cvFaceUpDeck"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/player_deck_height"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_weight="1" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/button_snap_title"
-            android:textSize="@dimen/text_size_title"
-            android:padding="@dimen/margin_medium"/>
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPlayerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_small"
+                android:text="@string/player_one_title"
+                android:textSize="@dimen/text_size_title" />
+
+            <Button
+                android:id="@+id/btnAction"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin_medium"
+                android:text="@string/button_snap_title"
+                android:textSize="@dimen/text_size_title" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvSnapNotification"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_snap_success_notification"
+        android:layout_margin="@dimen/margin_medium"
+        android:textColor="@color/text_snap_notification"
+        android:textSize="@dimen/text_size_snap_notification"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:text="SNAP!"
+        tools:visibility="visible"/>
+</FrameLayout>
